@@ -18,7 +18,8 @@ trans = pictransfer()
 
 
 def vfd_show(text):
-    mySocket.sendto(text,(SERVER_IP,PORT_NUMBER))
+    pass
+#    mySocket.sendto(text,(SERVER_IP,PORT_NUMBER))
  
 context = pyudev.Context()
 monitor = pyudev.Monitor.from_netlink(context)
