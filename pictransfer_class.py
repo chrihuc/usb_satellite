@@ -34,7 +34,7 @@ class pictransfer:
     def log(self, text):
         zeit =  time.time()
         datum = date.today()
-        datei = dir_path + str(datum) + '.log'
+        datei = str(datum) + '.log'
         f = open(datei, 'a')
         f.write('\n' + str(strftime("%Y-%m-%d %H:%M:%S",localtime(zeit)))+ ' Outputs: ' + str(text))
         f.closed  
