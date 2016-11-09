@@ -69,6 +69,7 @@ class pictransfer:
             self.log(filename + " kopiert nach " + fname)
         else:
             try:
+                os.chmod(filename, 0777) 
                 shutil.move(filename, fname)
                 self.log(filename + " verschoben nach " + fname)
             except (OSError, shutil.Error) as e:
@@ -76,7 +77,10 @@ class pictransfer:
                 self.log(filename + " kopiert nach " + fname)
         for root, dirs, files in os.walk(fname):
             for momo in files:
-                os.chmod(os.path.join(root, momo), 0777)   
+                try:
+                    os.chmod(os.path.join(root, momo), 0777)  
+                except:
+                    pass
 
     def sync(self, source, destination):
         for counter in range(0,2):
