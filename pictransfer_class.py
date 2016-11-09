@@ -72,9 +72,8 @@ class pictransfer:
                 shutil.move(filename, fname)
                 self.log(filename + " verschoben nach " + fname)
             except (OSError, shutil.Error) as e:
-                self.log(e.errno)
-                self.log(e.filename)
-                self.log(e.strerror)
+                shutil.copy(filename, fname)
+                self.log(filename + " kopiert nach " + fname)
         for root, dirs, files in os.walk(fname):
             for momo in files:
                 os.chmod(os.path.join(root, momo), 0777)   
