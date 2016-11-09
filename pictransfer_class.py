@@ -123,9 +123,9 @@ class pictransfer:
             if os.path.exists(source + "DCIM"):
                 self.log("Pictures found")
                 self.sync(source + "DCIM", home + '/Photos')            
-            if os.path.exists(source + "AVCHD/BDMV"):
+            if os.path.exists(source + "AVCHD"):
                 self.log("Videos found")
-                self.sync(source + "AVCHD/BDMV", home + '/Photos')
+                self.sync(source + "AVCHD", home + '/Photos')
             if os.path.exists(source + "MP_ROOT"):
                 self.log("Videos found")
                 self.sync(source + "MP_ROOT", home + '/Photos')            
