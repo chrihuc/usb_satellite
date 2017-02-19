@@ -129,6 +129,9 @@ class pictransfer:
             if os.path.exists(source + "AVCHD"):
                 self.log("Videos found")
                 self.sync(source + "AVCHD", home + '/Photos')
+                
+#                ffmpeg -i 00022.MTS -s 800x600 -c:a aac -q:a 2 -b:v 4000k -strict experimental 00022.MP4
+                
             if os.path.exists(source + "MP_ROOT"):
                 self.log("Videos found")
                 self.sync(source + "MP_ROOT", home + '/Photos')            

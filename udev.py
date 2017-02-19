@@ -27,7 +27,14 @@ monitor.start()
 monitor.filter_by('usb', 'usb_device')
 #print "Started:", monitor.started
 vfd_show("Started:")
- 
+
+def udp_send(szene):
+    dicti = {}
+    dicti['Szene'] = szene
+    #dicti['Command'] = 'Update'
+    hbtsocket = socket.socket( socket.AF_INET, socket.SOCK_DGRAM )
+    hbtsocket.sendto(str(dicti),('192.168.192.10',5000))  
+
 for device in iter(monitor.poll, None):
     #print device.action, device.subsystem, device
     vfd_show(device.action)
@@ -60,6 +67,7 @@ for device in iter(monitor.poll, None):
         #print "Cardreader"
         vfd_show("Cardreader")
         trans.check_transfer()
+        udp_send('convert_mts')
 #        setting_s("Durchsage", "Kopieren abgeschlossen")
 #        set_szene("sz_BadDurchsage")
         vfd_show("done")
@@ -67,6 +75,7 @@ for device in iter(monitor.poll, None):
         #print "Handycam"
         vfd_show("Handycam")
         trans.check_transfer()
+        udp_send('convert_mts')
 #        setting_s("Durchsage", "Kopieren abgeschlossen")
 #        set_szene("sz_BadDurchsage")
         vfd_show("done")
