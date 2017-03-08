@@ -10,7 +10,7 @@ from beurer import copy_from_scale
 import time
 
 SERVER_IP   = '192.168.192.10'
-PORT_NUMBER = 5005
+PORT_NUMBER = 5000
 SIZE = 1024
 mySocket = socket( AF_INET, SOCK_DGRAM )
 trans = pictransfer()
@@ -31,9 +31,7 @@ vfd_show("Started:")
 def udp_send(szene):
     dicti = {}
     dicti['Szene'] = szene
-    #dicti['Command'] = 'Update'
-    hbtsocket = socket.socket( socket.AF_INET, socket.SOCK_DGRAM )
-    hbtsocket.sendto(str(dicti),('192.168.192.10',5000))  
+    mySocket.sendto(str(dicti),(SERVER_IP,PORT_NUMBER))
 
 for device in iter(monitor.poll, None):
     #print device.action, device.subsystem, device
