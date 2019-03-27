@@ -120,7 +120,7 @@ def getUserliste(s, user):
     return liste 
 
 def write_msql(user, liste):
-    con = mdb.connect('192.168.192.10', 'beurer', 'beurer', 'Gesundheit')
+    con = mdb.connect('192.168.192.2', 'beurer', 'beurer', 'Gesundheit')
     with con:
         cur = con.cursor()
         for eintrage in liste:
